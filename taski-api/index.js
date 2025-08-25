@@ -4,7 +4,7 @@ import tasksRouter from './api/tasks';
 import usersRouter from './api/users';
 import './db';
 import cors from 'cors';
-import authenticate from './authenticate';
+
 
 
 dotenv.config();
@@ -28,7 +28,6 @@ app.use('/api/tasks', tasksRouter);
 
 app.use('/api/users', usersRouter);
 
-app.use('/api/movies', authenticate, moviesRouter);
 app.use(errHandler);
 // Enable CORS for all requests
 app.use(cors());
