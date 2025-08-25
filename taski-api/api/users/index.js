@@ -28,4 +28,18 @@ router.post('/', async (req, res) => {
         }
 });
 
+// Update a user
+router.put('/:id', async (req, res) => {
+    if (req.body._id) delete req.body._id;
+    const result = await User.updateOne({
+        _id: req.params.id,
+    }, req.body);
+    if (result.matchedCount) {
+        res.status(200).json({ code:200, msg: 'User Updated Sucessfully' });
+    } else {
+        res.status(404).json({ code: 404, msg: 'Unable to Update User' });
+    }
+});
+
+
 export default router;
